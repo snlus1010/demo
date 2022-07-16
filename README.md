@@ -2,18 +2,19 @@
 JAVA 11, Spring boot, JPA 사용
 
 ## DB 설계
-* 주어진 예제와 같은 테이블 생성 
+* 주어진 예제와 같이 간단하게 테이블 생성 
+* 첨부된 sample.sql 파일에 Create, Insert 문 추가 
+-> application.properties 의 `spring.jpa.hibernate.ddl-auto=create` 옵션 주석 해제하면 자동으로 create table 가능
+-> 단점은 application 재실행시 계속해서 테이블생성하여 데이터가 삭제됨. 
+* Datasource 는 application.properties 에서 수정가능 ( 현재 mariadb, oracle 만 포함되어있음 )
 
-        CREATE TABLE test.product_info (
-          seq int(11) auto_increment NOT NULL,
-          category varchar(100) NOT NULL,
-          brand varchar(100) NOT NULL,
-          price int(11) NOT NULL,
-          CONSTRAINT product_info_pk PRIMARY KEY (seq)
-        )
-        ENGINE=InnoDB
-        DEFAULT CHARSET=utf8mb4
-        COLLATE=utf8mb4_general_ci;
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| `seq` | `int` | 상품번호 |
+| `category` | `string` | 카테고리 |
+| `brand` | `string` | 브랜드 |
+| `price` | `int` | 가격 |
+ 
         
 ## API 명세
 
