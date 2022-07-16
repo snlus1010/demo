@@ -17,18 +17,80 @@ JAVA 11, Spring boot, JPA 사용
         
 ## API 명세
 
-### 1) 모든 카테고리의 상품을 브랜드 별로 자유롭게 선택해서 모든 상품을 구매할 때 최저가 조회 API
+### 1. 모든 카테고리의 상품을 브랜드 별로 자유롭게 선택해서 모든 상품을 구매할 때 최저가 조회 API
 
-#### 1. URL
-
+#### 1) URL
 ```http
-GET /api/campaigns/?api_key=12345678901234567890123456789012
+GET /searcher/search/lowest-price
 ```
+#### 2) Response
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `timestamp` | `string` | 시간(yyyy-MM-dd HH:mm:ss) |
+| `status` | `int` | 상태 코드 |
+| `message` | `string` | 내용 |
+| `result` | `Object` | 결과 객체|
+|`productInfoVo` | | |
+|  | `seq` | 상품 번호|
+|  | `category` | 카테고리|
+|  | `brand` | 브랜드명|
+|  | `price` | 가격|
+|  | `totalPrice` | 총액|
+
 
 ```javascript
 {
-  "message" : string,
-  "success" : bool,
-  "data"    : string
+  {
+    "timestamp": "2022-07-17 00:23:54",
+    "status": 200,
+    "result": {
+        "productInfoVo": [
+            {
+                "seq": 5,
+                "category": "가방",
+                "brand": "A",
+                "price": 2000
+            },
+            {
+                "seq": 30,
+                "category": "모자",
+                "brand": "D",
+                "price": 1500
+            },
+            ....
+        ],
+        "totalPrice": 34300
+    },
+    "message": "SUCCESS"
+}
+}
+```
+
+### 2) 한 브랜드에서 모든 카테고리의 상품을 한꺼번에 구매할 경우 최저가 및 브랜드 조회  API
+
+#### 1) URL
+```http
+GET /searcher/search/one-brand
+```
+#### 2) Response
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `timestamp` | `string` | 시간(yyyy-MM-dd HH:mm:ss) |
+| `status` | `int` | 상태 코드 |
+| `message` | `string` | 내용 |
+| `result` | `Object` | 결과 객체|
+|  | `brand` | 브랜드명|
+|  | `totalPrice` | 브랜드명|
+
+
+```javascript
+{    
+    "timestamp": "2022-07-17 00:35:03",
+    "status": 200,
+    "result": {
+        "brand": "D",
+        "totalPrice": 36100
+    },
+    "message": "SUCCESS"
 }
 ```
