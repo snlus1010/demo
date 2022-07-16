@@ -80,7 +80,7 @@ GET /searcher/search/one-brand
 | `message` | `string` | 내용 |
 | `result` | `Object` | 결과 |
 |  | `brand`(`string`)|브랜드명|
-|  | `totalPrice(`string`) | 브랜드명|
+|  | `totalPrice`(`string`) | 브랜드명|
 
 
 ```javascript
@@ -142,5 +142,103 @@ GET /searcher/search/high-low-price
         }
     },
     "message": "SUCCESS"
+}
+```
+
+### 4) 상품등록 API
+
+#### 1) URL
+```http
+POST /product/add
+```
+
+#### 2) Request
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `category` | `string` | 카테고리 |
+| `brand` | `string` | 브랜드 |
+| `price` | `int` | 가격 |
+
+
+#### 3) Response
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `timestamp` | `string` | 시간(yyyy-MM-dd HH:mm:ss) |
+| `status` | `int` | 상태 코드 |
+| `message` | `string` | 내용 |
+| `result` | `Object` | 결과 |
+
+
+```javascript
+{
+    "timestamp": "2022-07-17 00:49:32",
+    "status": 200,
+    "result": "SUCCESS",
+    "message": null
+}
+```
+
+### 5) 상품수정 API
+
+#### 1) URL
+```http
+PUT /product/update
+```
+
+#### 2) Request
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `category` | `string` | 카테고리 |
+| `brand` | `string` | 브랜드 |
+| `price` | `int` | 가격 |
+
+
+#### 3) Response
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `timestamp` | `string` | 시간(yyyy-MM-dd HH:mm:ss) |
+| `status` | `int` | 상태 코드 |
+| `message` | `string` | 내용 |
+| `result` | `Object` | 결과 |
+
+
+```javascript
+{
+    "timestamp": "2022-07-17 00:49:32",
+    "status": 200,
+    "result": "SUCCESS",
+    "message": null
+}
+```
+
+### 6) 상품삭제 API
+
+#### 1) URL
+```http
+POST /product/remove
+```
+
+#### 2) Request
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `seq` | `int` | 상품번호 |
+
+
+
+#### 3) Response
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `timestamp` | `string` | 시간(yyyy-MM-dd HH:mm:ss) |
+| `status` | `int` | 상태 코드 |
+| `message` | `string` | 내용 |
+| `result` | `Object` | 결과 |
+
+
+```javascript
+{
+    "timestamp": "2022-07-17 00:51:20",
+    "status": 200,
+    "result": "SUCCESS",
+    "message": null
 }
 ```
