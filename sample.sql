@@ -1,3 +1,16 @@
+# 테이블 생성
+CREATE TABLE test.product_info (
+	seq int(11) auto_increment NOT NULL,
+	category varchar(100) NOT NULL,
+	brand varchar(100) NOT NULL,
+	price int(11) NOT NULL,
+	CONSTRAINT product_info_pk PRIMARY KEY (seq)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_general_ci;
+
+
 # A회사 Sample
 insert into product_info (brand, category, price) values('A', '상의', 11200);
 insert into product_info (brand, category, price) values('A', '아우터', 5500);
